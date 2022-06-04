@@ -16,7 +16,7 @@ namespace DZ7
             string path = @"test.txt";
             string example = "0#02.05.2022 23:02:22#Акулич Дмитрий Игоревич#27#172#11.10.1994 0:00:00#Тверь";
             DB rep = new DB(path);
-
+            
             if (File.Exists(path) == false)
             {
                 File.AppendAllText(path, example);
@@ -27,10 +27,12 @@ namespace DZ7
                 rep.PrintDbToConsole();
             }
 
-            rep.NoteAdd();
-            rep.PrintDbToConsole();
+            //rep.NoteAdd();
+            //rep.PrintDbToConsole();
 
             rep.NoteDelete();
+            rep.Load();
+            rep.PrintDbToConsole();
             rep.NoteChange();
             rep.DischargeRange();
 

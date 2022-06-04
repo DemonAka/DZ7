@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Runtime;
 using System.Threading.Tasks;
 
 namespace DZ7
@@ -38,12 +39,16 @@ namespace DZ7
             this.employers[index] = ConcreteWorker;
             this.index++;
         }
+
         public void Load()
         {
+            Array.Clear(employers, 0, index);
+            index = 0;
             using (StreamReader sr = new StreamReader(this.path, true))
             {
                 while (!sr.EndOfStream)
                 {
+                    
                     string[] args = sr.ReadLine().Split('#');
                     Add(new Employee(Convert.ToInt32(args[0]), Convert.ToDateTime(args[1]), args[2], Convert.ToInt32(args[3]), Convert.ToInt32(args[4]), Convert.ToDateTime(args[5]), args[6]));
                 }
