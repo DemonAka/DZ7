@@ -26,17 +26,23 @@ namespace DZ7
                 rep.Load();
                 rep.PrintDbToConsole();
             }
-
+            Console.WriteLine(" ");
             rep.NoteAdd();
             rep.PrintDbToConsole();
-
+            Console.WriteLine(" ");
             rep.NoteDelete();
             rep.Load();
             rep.PrintDbToConsole();
+            Console.WriteLine(" ");
             rep.NoteChange();
             rep.Load();
             rep.PrintDbToConsole();
+            Console.WriteLine(" ");
             rep.DischargeRange();
+            Console.WriteLine(" ");
+            rep.Sort();
+            rep.PrintDbToConsole();
+
 
             Console.ReadKey();
 

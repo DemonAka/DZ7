@@ -214,27 +214,13 @@ namespace DZ7
         }
 
 
-        //}
-        //public void SearchId ()
-        //{
-        //    using (StreamReader sr = new StreamReader(path, Encoding.Unicode))
-        //    {
-        //       int idCheck;
-        //       Console.WriteLine($"Введите id пользователя");
-        //       int id = Convert.ToInt32(Console.ReadLine());
-        //        while (!sr.EndOfStream)
-        //        {
-        //            string[] data = sr.ReadLine().Split('#');
-        //            idCheck = Convert.ToInt32(data[0]);
-        //                if (idCheck == id)
-        //                {
-        //                Console.WriteLine($"{"ID ",2} {"Время создания записи ",10} {"Фамилия Имя Отчество ",27} {"Возраст ",10} {"Рост ",5} {"Дата рождения ",17} {"Место рождения ",17}\n"); 
-        //                Console.WriteLine($"{data[0],2} {data[1],22} {data[2],30} {data[3],5} {data[4],6} {data[5],20} {data[6],12}");
-        //                break;
-        //                }
-        //        }
-        //    }
-        //}
+        public void Sort()
+        {
+            Console.WriteLine("Выберите сортировать по возрастанию (1) или по убыванию (2) даты регистрации");
+            int key = Convert.ToInt32( Console.ReadLine());
+           if (key == 1) Array.Sort(employers, (i, j) => i.DataRegistration.CompareTo(j.DataRegistration));
+            else Array.Sort(employers, (j, i) => i.DataRegistration.CompareTo(j.DataRegistration));
+        }
 
 
 
