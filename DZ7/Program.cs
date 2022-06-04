@@ -27,13 +27,15 @@ namespace DZ7
                 rep.PrintDbToConsole();
             }
 
-            //rep.NoteAdd();
-            //rep.PrintDbToConsole();
+            rep.NoteAdd();
+            rep.PrintDbToConsole();
 
             rep.NoteDelete();
             rep.Load();
             rep.PrintDbToConsole();
             rep.NoteChange();
+            rep.Load();
+            rep.PrintDbToConsole();
             rep.DischargeRange();
 
             Console.ReadKey();
