@@ -14,7 +14,7 @@ namespace DZ7
         private string path;
         int index;
         string[] titles;
-
+        
 
         public DB(string Path)
         {
@@ -40,25 +40,22 @@ namespace DZ7
         }
         public void Load()
         {
-            using (StreamReader sr = new StreamReader(this.path))
+            using (StreamReader sr = new StreamReader(this.path, true))
             {
-                //titles = sr.ReadLine().Split(',');
-
-
                 while (!sr.EndOfStream)
                 {
                     string[] args = sr.ReadLine().Split('#');
                     Add(new Employee(Convert.ToInt32(args[0]), Convert.ToDateTime(args[1]), args[2], Convert.ToInt32(args[3]), Convert.ToInt32(args[4]), Convert.ToDateTime(args[5]), args[6]));
                 }
-            }
+                }  
         }
         public void PrintDbToConsole()
         {
-            Console.WriteLine($"{this.titles[0],2} {this.titles[1],10} {this.titles[4],15} {this.titles[2],15} {this.titles[3],10}");
+            //Console.WriteLine($"{this.titles[0],2} {this.titles[1],10} {this.titles[4],15} {this.titles[2],15} {this.titles[3],10}");
 
             for (int i = 0; i < index; i++)
             {
-                Console.WriteLine(this.employers[i].Print());
+                Console.WriteLine(employers[i].Print());
             }
 
         }
@@ -68,13 +65,13 @@ namespace DZ7
             using (StreamWriter sw = new StreamWriter(path, true, Encoding.Unicode))
             {
                 char key = 'д';
-                
+                int id = index;
                 Employee emp = new Employee();
                 do
                 {
                     string note = string.Empty;
-
-                    note += $"{index}#";
+                    id++;
+                    note += $"{id}#";
 
                     note += $"{DateTime.Now}#";
 
@@ -99,10 +96,10 @@ namespace DZ7
                     note += $"{emp.PlaceBith}#";
 
                     sw.WriteLine(note);
+                    Add(new Employee(id, DateTime.Now, emp.Name, emp.Age, emp.Heigh, emp.Birthday, emp.PlaceBith));
                     Console.Write("\nПродожить н/д"); key = Console.ReadKey(true).KeyChar;
                     
                     sw.Flush();
-                    index++;
                 } while (char.ToLower(key) == 'д');
             }
         }

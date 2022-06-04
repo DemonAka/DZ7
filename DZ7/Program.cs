@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,52 +14,27 @@ namespace DZ7
         {
 
             string path = @"test.txt";
+            string example = "0#02.05.2022 23:02:22#Акулич Дмитрий Игоревич#27#172#11.10.1994 0:00:00#Тверь";
             DB rep = new DB(path);
 
-            //rep.NoteAdd();
-            rep.Load();
+            if (File.Exists(path) == false)
+            {
+                File.AppendAllText(path, example);
+            }
+            else
+            {
+                rep.Load();
+                rep.PrintDbToConsole();
+            }
+
+            rep.NoteAdd();
             rep.PrintDbToConsole();
-            //rep.NoteAdd();
-            //rep.NoteDelete();
-            //rep.Add(new Worker("111", "111", "111", 111, "111"));
 
-            //Console.ReadKey();
-
-            //rep.PrintDbToConsole();
-
+            rep.NoteDelete();
+            rep.NoteChange();
+            rep.DischargeRange();
 
             Console.ReadKey();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            //DB rep = new DB(path);
-            ////rep.NoteCreate();
-            ////rep.PrintDbToConsole();
-            ////rep.SearchId();
-            ////rep.NoteDelete();
-            ////rep.NoteChange();
-            //rep.DischargeRange();
-
-            //Console.ReadKey();
 
 
         }
