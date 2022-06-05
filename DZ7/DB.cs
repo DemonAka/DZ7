@@ -52,7 +52,7 @@ namespace DZ7
                     string[] args = sr.ReadLine().Split('#');
                     Add(new Employee(Convert.ToInt32(args[0]), Convert.ToDateTime(args[1]), args[2], Convert.ToInt32(args[3]), Convert.ToInt32(args[4]), Convert.ToDateTime(args[5]), args[6]));
                 }
-                }  
+                }
         }
         public void PrintDbToConsole()
         {
@@ -65,6 +65,21 @@ namespace DZ7
 
         }
 
+
+        public int LastIdFind()
+        {
+            int tempId = 0;
+
+            for (int i = 0; i < employers.Length; i++)
+            {
+                if (employers[i].Id >= tempId) tempId = employers[i].Id;
+            }
+
+            tempId++;
+            //Console.WriteLine(tempId);
+            return tempId;
+        }
+
         public void NoteAdd()
         {
             using (StreamWriter sw = new StreamWriter(path, true, Encoding.Unicode))
@@ -75,7 +90,7 @@ namespace DZ7
                 do
                 {
                     string note = string.Empty;
-                    id++;
+                    id = LastIdFind();
                     note += $"{id}#";
 
                     note += $"{DateTime.Now}#";

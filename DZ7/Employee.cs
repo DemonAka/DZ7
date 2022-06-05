@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DZ7
 {
-    struct Employee
+     public struct Employee
     {
 
         public Employee(int Id,  DateTime DataRegistration, string Name, int Age, int Heigh, DateTime Birthday, string PlaceBith)

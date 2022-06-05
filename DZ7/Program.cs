@@ -27,6 +27,7 @@ namespace DZ7
                 rep.PrintDbToConsole();
             }
             Console.WriteLine(" ");
+            //rep.LastIdFind();
             rep.NoteAdd();
             rep.PrintDbToConsole();
             Console.WriteLine(" ");
